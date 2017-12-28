@@ -1,6 +1,5 @@
 import 'rxjs/add/observable/from';
 
-import { Store } from 'redux';
 import { Observable } from 'rxjs/Observable';
 
 import { ReduxActionContextDecorator } from '../context/decorator/redux-action-context-decorator';
@@ -95,7 +94,7 @@ describe('ReduxActionDispatcher', () => {
         target: BazActions.prototype.unknown,
         willDispatchAction: false,
         expectedType: null,
-    }  ].forEach(actionConfig => {
+    } ].forEach(actionConfig => {
 
         const [ className, methodName ] = actionConfig.name.split('.');
 
@@ -117,14 +116,16 @@ describe('ReduxActionDispatcher', () => {
 
         describe('dispatch()', () => {
 
-            let store: Store<{}>;
+            let dispatchedActions: {}[];
+
+            beforeAll(() => {
+                ReduxActionDispatcher.dispatchedActions.subscribe((action) => {
+                    dispatchedActions.push(action);
+                });
+            });
 
             beforeEach(() => {
-                store = {
-                    dispatch: jasmine.createSpy('dispatch')
-                } as {} as Store<{}>;
-
-                ReduxActionDispatcher.store = store;
+                dispatchedActions = [];
             });
 
             describe(`on ${className}`, () => {
@@ -152,13 +153,13 @@ describe('ReduxActionDispatcher', () => {
                                 ReduxActionDispatcher.dispatch(actionConfig.target, payloadConfig.payload).then(() => {
 
                                     if (actionConfig.willDispatchAction) {
-                                        expect(store.dispatch).toHaveBeenCalledTimes(1);
-                                        expect(store.dispatch).toHaveBeenCalledWith({
+                                        expect(dispatchedActions).toEqual([ {
                                             type: actionConfig.expectedType,
                                             payload: payloadConfig.expectedPayload,
-                                        });
+                                        } ]);
+
                                     } else {
-                                        expect(store.dispatch).toHaveBeenCalledTimes(0);
+                                        expect(dispatchedActions).toEqual([]);
                                     }
 
                                     done();

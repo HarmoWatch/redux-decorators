@@ -1,9 +1,5 @@
-import 'rxjs/add/operator/take';
-
-import { Store } from 'redux';
-
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import { ReduxActionContextDecorator } from '../context/decorator/redux-action-context-decorator';
 import { ReduxActionDecorator } from '../decorator/redux-action-decorator';
@@ -11,11 +7,7 @@ import { ReduxActionFunction } from '../function/redux-action-function.type';
 
 export class ReduxActionDispatcher {
 
-    private static _store = new BehaviorSubject<Store<{}>>(null);
-
-    public static set store(store: Store<{}>) {
-        ReduxActionDispatcher._store.next(store);
-    }
+    public static readonly dispatchedActions = new Subject<{}>();
 
     public static getType(target: ReduxActionFunction) {
 
@@ -36,20 +28,12 @@ export class ReduxActionDispatcher {
     }
 
     public static dispatch(target: ReduxActionFunction, payload?: {} | Promise<{}> | Observable<{}>): Promise<void> {
-        return Promise.all([
-            payload instanceof Observable ? payload.toPromise() : payload,
-            ReduxActionDispatcher.getStore(),
-        ]).then(([ p, store ]) => {
-            const type = ReduxActionDispatcher.getType(target);
-            type ? store.dispatch({type, payload: p}) : null;
-        });
-    }
-
-    private static getStore(): Promise<Store<{}>> {
-        return new Promise(resolve => resolve(
-            ReduxActionDispatcher._store.getValue() ||
-            ReduxActionDispatcher._store.take(1).toPromise()
-        ));
+        return Promise
+            .resolve(payload instanceof Observable ? payload.toPromise() : payload)
+            .then((p) => {
+                const type = ReduxActionDispatcher.getType(target);
+                type ? ReduxActionDispatcher.dispatchedActions.next({type, payload: p}) : null;
+            });
     }
 
 }
