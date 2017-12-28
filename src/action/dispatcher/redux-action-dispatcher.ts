@@ -22,7 +22,7 @@ export class ReduxActionDispatcher {
         const action = ReduxActionDecorator.get(target);
 
         if (!action) {
-            return;
+            return null;
         }
 
         const {type, contextClass} = ReduxActionDecorator.get(target);

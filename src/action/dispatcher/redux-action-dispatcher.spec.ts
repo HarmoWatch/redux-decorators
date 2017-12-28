@@ -53,34 +53,49 @@ describe('ReduxActionDispatcher', () => {
 
         }
 
+        public unknown() {
+
+        }
+
     }
 
 
     [ {
         name: 'FooActions.addFoo',
         target: FooActions.prototype.addFoo,
-        expectedType: 'foo/add'
+        willDispatchAction: true,
+        expectedType: 'foo/add',
     }, {
         name: 'FooActions.remove',
         target: FooActions.prototype.remove,
-        expectedType: 'foo/remove'
+        willDispatchAction: true,
+        expectedType: 'foo/remove',
     }, {
         name: 'BarActions.addFoo',
         target: BarActions.prototype.addFoo,
-        expectedType: 'add'
+        willDispatchAction: true,
+        expectedType: 'add',
     }, {
         name: 'BarActions.remove',
         target: BarActions.prototype.remove,
-        expectedType: 'remove'
+        willDispatchAction: true,
+        expectedType: 'remove',
     }, {
         name: 'BazActions.addFoo',
         target: BazActions.prototype.addFoo,
-        expectedType: 'baz/add'
+        willDispatchAction: true,
+        expectedType: 'baz/add',
     }, {
         name: 'BazActions.remove',
         target: BazActions.prototype.remove,
-        expectedType: 'baz/remove'
-    } ].forEach(actionConfig => {
+        willDispatchAction: true,
+        expectedType: 'baz/remove',
+    }, {
+        name: 'BazActions.unknown',
+        target: BazActions.prototype.unknown,
+        willDispatchAction: false,
+        expectedType: null,
+    }  ].forEach(actionConfig => {
 
         const [ className, methodName ] = actionConfig.name.split('.');
 
@@ -135,11 +150,16 @@ describe('ReduxActionDispatcher', () => {
                             it('will dispatch the correct action', done => {
 
                                 ReduxActionDispatcher.dispatch(actionConfig.target, payloadConfig.payload).then(() => {
-                                    expect(store.dispatch).toHaveBeenCalledTimes(1);
-                                    expect(store.dispatch).toHaveBeenCalledWith({
-                                        type: actionConfig.expectedType,
-                                        payload: payloadConfig.expectedPayload,
-                                    });
+
+                                    if (actionConfig.willDispatchAction) {
+                                        expect(store.dispatch).toHaveBeenCalledTimes(1);
+                                        expect(store.dispatch).toHaveBeenCalledWith({
+                                            type: actionConfig.expectedType,
+                                            payload: payloadConfig.expectedPayload,
+                                        });
+                                    } else {
+                                        expect(store.dispatch).toHaveBeenCalledTimes(0);
+                                    }
 
                                     done();
                                 });
