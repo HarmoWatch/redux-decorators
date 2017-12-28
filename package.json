@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
-    "test": "karma start karma.conf.js",
+    "test": "karma start karma.conf.js && npm run coveralls",
     "coveralls": "cat ./coverage/coverage.lcov | node node_modules/.bin/coveralls",
     "package:build": "ng-packagr",
     "package:publish": "npm publish ./dist --registry https://npm.harmowatch.com"
