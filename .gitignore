@@ -1,0 +1,4 @@
+.coveralls.yml
+.idea/
+coverage/
+node_modules/
