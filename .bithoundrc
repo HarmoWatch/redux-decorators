@@ -1,8 +1,10 @@
-"critics": {
-  "lint": {"engine": "tslint"}
-},
-"ignore": [
-  "**/karma.conf.js",
-  "**/spec-bundle.js",
-  "**/webpack.config.js"
-]
+{
+  "critics": {
+    "lint": {"engine": "tslint"}
+  },
+  "ignore": [
+    "**/karma.conf.js",
+    "**/spec-bundle.js",
+    "**/webpack.config.js"
+  ]
+}
