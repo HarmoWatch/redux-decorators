@@ -9,3 +9,5 @@
 [![bitHound Dependencies](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/dependencies.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators/master/dependencies/npm)
 [![bitHound Dev Dependencies](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/devDependencies.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/code.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators)
+
+[![codebeat badge](https://codebeat.co/badges/9c43bf4d-4eab-4c5c-837d-473faf297f77)](https://codebeat.co/projects/github-com-harmowatch-ngx-redux-core-master)
