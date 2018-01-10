@@ -1,8 +1,13 @@
 {
-  "critics": {
+"critics": {
     "lint": {
-        "engine": "tslint",
-        "configLocation": "tsconfig.json"
+      "engine": "tslint",
+      "configLocation": "tsconfig.json"
     }
+  },
+  "dependencies": {
+    "mute": [
+      "bithound"
+    ]
   }
 }
