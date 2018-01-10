@@ -7,7 +7,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "coveralls": "cat ./coverage/coverage.lcov | node node_modules/.bin/coveralls",
     "package:build": "ng-packagr",
-    "package:publish": "npm publish ./dist --registry https://npm.harmowatch.com",
+    "package:publish:public": "npm publish ./dist --access=public --registry https://registry.npmjs.org",
+    "package:publish:private": "npm publish ./dist --registry https://npm.harmowatch.com",
     "bithound:check": "bithound check git@github.com:HarmoWatch/redux-decorators.git"
   },
   "ngPackage": {
