@@ -1,5 +1,5 @@
 {
-"critics": {
+  "critics": {
     "lint": {
       "engine": "tslint",
       "configLocation": "tsconfig.json"
