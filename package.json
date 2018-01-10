@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/jasmine": "2.8.3",
     "awesome-typescript-loader": "3.4.1",
+    "babel-core": "^6.26.0",
     "bithound": "^1.7.0",
     "coveralls": "3.0.0",
     "cross-env": "5.1.3",
