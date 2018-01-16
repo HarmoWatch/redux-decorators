@@ -10,7 +10,7 @@ export class ReduxActionContextDecorator<T = {
     public static readonly forClass = ReduxActionContextDecorator.instance.forClass;
 
     constructor() {
-        super(Symbol('ReduxActionContext'));
+        super('ReduxActionContext');
     }
 
 }

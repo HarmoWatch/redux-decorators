@@ -7,7 +7,7 @@ export class ReduxReducerDecorator<T = Array<Function | string> | Function | str
     public static readonly forMethod = ReduxReducerDecorator.instance.forMethod;
 
     constructor() {
-        super(Symbol('ReduxReducer'));
+        super('ReduxReducer');
     }
 
 }

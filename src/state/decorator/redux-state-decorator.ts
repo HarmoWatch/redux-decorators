@@ -9,7 +9,7 @@ export class ReduxStateDecorator<T = {
     public static readonly forClass = ReduxStateDecorator.instance.forClass;
 
     constructor() {
-        super(Symbol('ReduxState'));
+        super('ReduxState');
     }
 
 }

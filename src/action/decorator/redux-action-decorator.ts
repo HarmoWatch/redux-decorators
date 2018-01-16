@@ -14,7 +14,7 @@ export class ReduxActionDecorator<T = {
     public static readonly forMethod = ReduxActionDecorator.instance.forMethod;
 
     constructor() {
-        super(Symbol('ReduxAction'));
+        super('ReduxAction');
     }
 
     public get forMethod(): (value?: T) => MethodType<Function> {

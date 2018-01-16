@@ -12,7 +12,7 @@ export class ReduxModuleDecorator<T = {
     public static readonly forClass = ReduxModuleDecorator.instance.forClass;
 
     constructor() {
-        super(Symbol('ReduxModule'));
+        super('ReduxModule');
     }
 
 }
