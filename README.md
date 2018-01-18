@@ -4,12 +4,6 @@
 [![Build Status](https://travis-ci.org/HarmoWatch/redux-decorators.svg?branch=master)](https://travis-ci.org/HarmoWatch/redux-decorators)
 [![Coverage Status](https://coveralls.io/repos/github/HarmoWatch/redux-decorators/badge.svg?branch=master)](https://coveralls.io/github/HarmoWatch/redux-decorators?branch=master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e2f8abd1a70656b59a63/maintainability)](https://codeclimate.com/github/HarmoWatch/redux-decorators/maintainability)
-
-[![bitHound Overall Score](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/score.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators)
-[![bitHound Dependencies](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/dependencies.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators/master/dependencies/npm)
-[![bitHound Dev Dependencies](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/devDependencies.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators/master/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/HarmoWatch/redux-decorators/badges/code.svg)](https://www.bithound.io/github/HarmoWatch/redux-decorators)
-
 [![codebeat badge](https://codebeat.co/badges/9c43bf4d-4eab-4c5c-837d-473faf297f77)](https://codebeat.co/projects/github-com-harmowatch-ngx-redux-core-master)
 
 ## What is this package for?
@@ -24,7 +18,8 @@ are used well in the Angular 2+ package [@harmowatch/ngx-redux-core](https://git
 - [ ] can be used on class declarations
 - [x] can be used on class method declarations
 
-When the decorated method was called it will invoke `ReduxActionDispatcher.dispatch`. Please checkout the documentation
+When the decorated method was called it will invoke `ReduxActionDispatcher.dispatch`. Please
+[checkout the documentation](https://github.com/HarmoWatch/redux-decorators#action-dispatching)
 about `ReduxActionDispatcher` for more information about action dispatching.
 
 ```ts
@@ -60,7 +55,9 @@ ReduxActionContextDecorator.get(SomeActionClass.prototype.methodWithAutomaticTyp
 - [ ] can be used on class method declarations
 
 This decorator only makes sense together with the `ReduxActionDecorator`, because the configured prefix is used a prefix
-for each configured action type. Please see `ReduxActionDispatcher.getType` for more information.
+for each configured action type. Please 
+[see `ReduxActionDispatcher.getType`](https://github.com/HarmoWatch/redux-decorators#reduxactiondispatchergettype) for 
+more information.
 
 ```ts
 // (1) decorate the class
