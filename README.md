@@ -150,7 +150,7 @@ This method will resolve a valid redux action type for the given method. The giv
 `ReduxActionDecorator.forMethod`. If the class of the method is also decorated by 
 `ReduxActionContextDecorator.forClass`, then the defined `prefix` is prepended to the returned string.
 
-[take a look at the unit test] (https://github.com/HarmoWatch/redux-decorators/blob/master/src/action/dispatcher/redux-action-dispatcher.spec.ts)
+[take a look at the unit test](https://github.com/HarmoWatch/redux-decorators/blob/master/src/action/dispatcher/redux-action-dispatcher.spec.ts)
 
 #### `ReduxActionDispatcher.dispatch`
 
@@ -164,4 +164,4 @@ ReduxActionDispatcher.dispatchedActions.subscribe(action => {
 })
 ```
 
-[take a look at the unit test] (https://github.com/HarmoWatch/redux-decorators/blob/master/src/action/dispatcher/redux-action-dispatcher.spec.ts)
+[take a look at the unit test](https://github.com/HarmoWatch/redux-decorators/blob/master/src/action/dispatcher/redux-action-dispatcher.spec.ts)
