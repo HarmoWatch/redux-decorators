@@ -2,6 +2,9 @@ import { GenericDecorator } from '../../generic/generic-decorator';
 import { ReduxReducerType } from '../../reducer/redux-reducer.type';
 import { ReduxStateType } from '../../state/redux-state.type';
 
+/**
+ * @todo check if we really need this decorator
+ */
 export class ReduxModuleDecorator<T = {
     state: ReduxStateType;
     reducers?: ReduxReducerType[];

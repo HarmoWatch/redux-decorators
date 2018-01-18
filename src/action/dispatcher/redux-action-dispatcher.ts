@@ -7,9 +7,9 @@ import { ReduxActionFunction } from '../function/redux-action-function.type';
 
 export class ReduxActionDispatcher {
 
-    public static readonly dispatchedActions = new Subject<{}>();
+    public static readonly dispatchedActions = new Subject<{type: string, payload: any}>();
 
-    public static getType(target: ReduxActionFunction) {
+    public static getType(target: ReduxActionFunction): string {
 
         const action = ReduxActionDecorator.get(target);
 
