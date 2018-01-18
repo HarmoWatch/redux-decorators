@@ -10,10 +10,11 @@
       "dom"
     ],
     "noImplicitAny": true,
-    "suppressImplicitAnyIndexErrors": true
+    "outDir": "lib",
+    "declaration": true
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "lib"
   ]
 }
