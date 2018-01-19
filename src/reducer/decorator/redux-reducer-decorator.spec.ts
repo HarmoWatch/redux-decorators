@@ -1,4 +1,4 @@
-import { ReduxActionDecorator } from '../../action/decorator/redux-action-decorator';
+import { ReduxActionDecorator } from '../../';
 import { ReduxReducerDecorator } from './redux-reducer-decorator';
 
 class SomeActionClass {

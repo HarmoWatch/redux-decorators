@@ -1,9 +1,7 @@
 import 'rxjs/add/observable/from';
 
 import { Observable } from 'rxjs/Observable';
-
-import { ReduxActionContextDecorator } from '../context/decorator/redux-action-context-decorator';
-import { ReduxActionDecorator } from '../decorator/redux-action-decorator';
+import { ReduxActionContextDecorator, ReduxActionDecorator } from '../../';
 import { ReduxActionDispatcher } from './redux-action-dispatcher';
 
 describe('ReduxActionDispatcher', () => {

@@ -1,4 +1,4 @@
-import { ReduxStateInterface } from '../../state/redux-state.interface';
+import { ReduxStateInterface } from '../../';
 import { ReduxModuleDecorator } from './redux-module-decorator';
 
 class State implements ReduxStateInterface<{}> {

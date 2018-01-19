@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/toPromise';
 
+import { ReduxActionDispatcher } from '../../';
 import { GenericDecorator, MethodType } from '../../generic/generic-decorator';
-import { ReduxActionDispatcher } from '../dispatcher/redux-action-dispatcher';
 
 export class ReduxActionDecorator<T = {
     type?: string;

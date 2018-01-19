@@ -1,9 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-
-import { ReduxActionContextDecorator } from '../context/decorator/redux-action-context-decorator';
-import { ReduxActionDecorator } from '../decorator/redux-action-decorator';
-import { ReduxActionFunction } from '../function/redux-action-function.type';
+import { ReduxActionContextDecorator, ReduxActionDecorator, ReduxActionFunction } from '../../';
 
 export class ReduxActionDispatcher {
 

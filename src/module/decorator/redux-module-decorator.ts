@@ -1,6 +1,5 @@
+import { ReduxReducerType, ReduxStateType } from '../../';
 import { GenericDecorator } from '../../generic/generic-decorator';
-import { ReduxReducerType } from '../../reducer/redux-reducer.type';
-import { ReduxStateType } from '../../state/redux-state.type';
 
 /**
  * @todo check if we really need this decorator

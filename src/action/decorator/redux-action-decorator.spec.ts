@@ -1,6 +1,6 @@
 import 'rxjs/add/observable/from';
 
-import { ReduxActionDispatcher } from '../dispatcher/redux-action-dispatcher';
+import { ReduxActionDispatcher } from '../../';
 import { ReduxActionDecorator } from './redux-action-decorator';
 
 class TestSubject {
