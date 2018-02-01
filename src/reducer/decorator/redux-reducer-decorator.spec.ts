@@ -30,6 +30,16 @@ class SomeReducerClass {
 
     }
 
+    @ReduxReducerDecorator.forMethod('some-action-type')
+    public stringType() {
+
+    }
+
+    @ReduxReducerDecorator.forMethod([ 'some-action-type', 'some-other-type' ])
+    public stringsType() {
+
+    }
+
 }
 
 describe('ReduxReducerMethodDecorator', () => {
@@ -42,6 +52,12 @@ describe('ReduxReducerMethodDecorator', () => {
         expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.addTwoFoos)).toEqual([
             SomeActionClass.prototype.addFoo,
             SomeActionClass.prototype.addAnotherFoo,
+        ]);
+
+        expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.stringType)).toEqual('some-action-type');
+        expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.stringsType)).toEqual([
+            'some-action-type',
+            'some-other-type',
         ]);
     });
 
