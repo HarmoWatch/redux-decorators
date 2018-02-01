@@ -92,6 +92,11 @@ describe('ReduxActionDispatcher', () => {
         target: BazActions.prototype.unknown,
         willDispatchAction: false,
         expectedType: null,
+    }, {
+        name: 'some/string',
+        target: 'some/string',
+        willDispatchAction: true,
+        expectedType: 'some/string',
     } ].forEach(actionConfig => {
 
         const [ className, methodName ] = actionConfig.name.split('.');
@@ -128,7 +133,7 @@ describe('ReduxActionDispatcher', () => {
 
             describe(`on ${className}`, () => {
 
-                describe(`.${methodName}()`, () => {
+                describe(methodName ? `.${methodName}()` : 'string dispatch', () => {
 
                     [ {
                         desc: 'payload is a string',

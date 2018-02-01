@@ -8,6 +8,10 @@ export class ReduxActionDispatcher {
 
     public static getType(target: ReduxActionFunction): string {
 
+        if (typeof target === 'string') {
+            return target;
+        }
+
         const action = ReduxActionDecorator.get(target);
 
         if (!action) {
