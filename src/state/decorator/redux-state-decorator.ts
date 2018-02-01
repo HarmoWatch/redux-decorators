@@ -1,12 +1,17 @@
 import { GenericDecorator } from '../../generic/generic-decorator';
 
-export class ReduxStateDecorator<T = {
+export interface ReduxStateDecoratorConfig {
     name: string;
-}> extends GenericDecorator<T> {
+}
+
+export class ReduxStateDecorator extends GenericDecorator<ReduxStateDecoratorConfig> {
 
     public static readonly instance = new ReduxStateDecorator();
     public static readonly get = ReduxStateDecorator.instance.get.bind(ReduxStateDecorator.instance);
-    public static readonly forClass = ReduxStateDecorator.instance.forClass;
+
+    public static forClass(config?: ReduxStateDecoratorConfig) {
+        return ReduxStateDecorator.instance.forClass(config);
+    }
 
     constructor() {
         super('ReduxState');

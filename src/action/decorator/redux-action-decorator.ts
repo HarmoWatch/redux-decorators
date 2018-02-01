@@ -3,23 +3,27 @@ import 'rxjs/add/operator/toPromise';
 import { ReduxActionDispatcher } from '../../';
 import { GenericDecorator, MethodType } from '../../generic/generic-decorator';
 
-export class ReduxActionDecorator<T = {
+export interface ReduxActionDecoratorConfig {
     type?: string;
     contextClass?: {}
-}> extends GenericDecorator<T> {
+}
+
+export class ReduxActionDecorator extends GenericDecorator<ReduxActionDecoratorConfig> {
 
     public static readonly instance = new ReduxActionDecorator();
 
     public static readonly get = ReduxActionDecorator.instance.get.bind(ReduxActionDecorator.instance);
-    public static readonly forMethod = ReduxActionDecorator.instance.forMethod;
+
+    public static forMethod(config?: ReduxActionDecoratorConfig) {
+        return ReduxActionDecorator.instance.forMethod(config);
+    }
 
     constructor() {
         super('ReduxAction');
     }
 
-    public get forMethod(): (value?: T) => MethodType<Function> {
+    public get forMethod(): (config?: ReduxActionDecoratorConfig) => MethodType<Function> {
         return config => (target, propertyKey, descriptor) => {
-
             config = Object.assign({
                 type: String(propertyKey),
                 contextClass: target.constructor,

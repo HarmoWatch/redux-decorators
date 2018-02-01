@@ -1,13 +1,18 @@
 import { GenericDecorator } from '../../../generic/generic-decorator';
 
-export class ReduxActionContextDecorator<T = {
+export interface ReduxActionContextDecoratorConfig {
     prefix: string;
-}> extends GenericDecorator<T> {
+}
+
+export class ReduxActionContextDecorator extends GenericDecorator<ReduxActionContextDecoratorConfig> {
 
     public static readonly instance = new ReduxActionContextDecorator();
 
     public static readonly get = ReduxActionContextDecorator.instance.get.bind(ReduxActionContextDecorator.instance);
-    public static readonly forClass = ReduxActionContextDecorator.instance.forClass;
+
+    public static forClass(config?: ReduxActionContextDecoratorConfig) {
+        return ReduxActionContextDecorator.instance.forClass(config);
+    }
 
     constructor() {
         super('ReduxActionContext');
