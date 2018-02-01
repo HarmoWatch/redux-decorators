@@ -12,6 +12,7 @@
     "coveralls": "cat ./coverage/coverage.lcov | node node_modules/.bin/coveralls",
     "package:build": "rimraf ./lib && tsc",
     "package:publish:public": "npm publish --access=public --registry https://registry.npmjs.org",
+    "package:publish:public:next": "npm publish --access=public --tag=next --registry https://registry.npmjs.org",
     "package:publish:private": "npm publish --registry https://npm.harmowatch.com --force"
   },
   "license": "MIT",
