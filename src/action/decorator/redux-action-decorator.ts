@@ -8,15 +8,17 @@ export interface ReduxActionDecoratorConfig {
     contextClass?: {}
 }
 
+export function ReduxActionDecoratorForMethod(config?: ReduxActionDecoratorConfig) {
+    return ReduxActionDecorator.instance.forMethod(config);
+}
+
 export class ReduxActionDecorator extends GenericDecorator<ReduxActionDecoratorConfig> {
 
     public static readonly instance = new ReduxActionDecorator();
 
     public static readonly get = ReduxActionDecorator.instance.get.bind(ReduxActionDecorator.instance);
 
-    public static forMethod(config?: ReduxActionDecoratorConfig) {
-        return ReduxActionDecorator.instance.forMethod(config);
-    }
+    public static forMethod = ReduxActionDecoratorForMethod;
 
     constructor() {
         super('ReduxAction');

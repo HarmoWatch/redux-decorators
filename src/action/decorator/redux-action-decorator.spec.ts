@@ -1,16 +1,16 @@
 import 'rxjs/add/observable/from';
 
 import { ReduxActionDispatcher } from '../../';
-import { ReduxActionDecorator } from './redux-action-decorator';
+import { ReduxActionDecorator, ReduxActionDecoratorForMethod } from './redux-action-decorator';
 
 class TestSubject {
 
-    @ReduxActionDecorator.forMethod({type: 'some-other-type'})
+    @ReduxActionDecoratorForMethod({type: 'some-other-type'})
     public methodWithCustomType<T>(input: T): T {
         return input;
     }
 
-    @ReduxActionDecorator.forMethod()
+    @ReduxActionDecoratorForMethod()
     public methodWithAutomaticType<T>(input: T): T {
         return input;
     }

@@ -1,6 +1,6 @@
-import { ReduxActionContextDecorator } from './redux-action-context-decorator';
+import { ReduxActionContextDecorator, ReduxActionContextDecoratorForClass } from './redux-action-context-decorator';
 
-@ReduxActionContextDecorator.forClass({prefix: 'prefix://foo/bar'})
+@ReduxActionContextDecoratorForClass({prefix: 'prefix://foo/bar'})
 class SomeClass {
 
 }

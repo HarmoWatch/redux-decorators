@@ -1,6 +1,6 @@
-import { ReduxStateDecorator } from './redux-state-decorator';
+import { ReduxStateDecorator, ReduxStateDecoratorForClass } from './redux-state-decorator';
 
-@ReduxStateDecorator.forClass({
+@ReduxStateDecoratorForClass({
     name: 'state-1-2-3',
 })
 class FooState {

@@ -1,5 +1,5 @@
 import { ReduxActionDecorator } from '../../';
-import { ReduxReducerDecorator } from './redux-reducer-decorator';
+import { ReduxReducerDecorator, ReduxReducerDecoratorForMethod } from './redux-reducer-decorator';
 
 class SomeActionClass {
 
@@ -17,12 +17,12 @@ class SomeActionClass {
 
 class SomeReducerClass {
 
-    @ReduxReducerDecorator.forMethod(SomeActionClass.prototype.addFoo)
+    @ReduxReducerDecoratorForMethod(SomeActionClass.prototype.addFoo)
     public addFoo() {
 
     }
 
-    @ReduxReducerDecorator.forMethod([
+    @ReduxReducerDecoratorForMethod([
         SomeActionClass.prototype.addFoo,
         SomeActionClass.prototype.addAnotherFoo,
     ])
@@ -30,12 +30,12 @@ class SomeReducerClass {
 
     }
 
-    @ReduxReducerDecorator.forMethod('some-action-type')
+    @ReduxReducerDecoratorForMethod('some-action-type')
     public stringType() {
 
     }
 
-    @ReduxReducerDecorator.forMethod([ 'some-action-type', 'some-other-type' ])
+    @ReduxReducerDecoratorForMethod([ 'some-action-type', 'some-other-type' ])
     public stringsType() {
 
     }
