@@ -153,12 +153,20 @@ describe('ReduxActionDispatcher', () => {
 
                             it('will dispatch the correct action', done => {
 
-                                ReduxActionDispatcher.dispatch(actionConfig.target, payloadConfig.payload).then(() => {
+                                const dispatchSuccessFunction = () => {
+                                };
+
+                                ReduxActionDispatcher.dispatch(
+                                    actionConfig.target,
+                                    payloadConfig.payload,
+                                    dispatchSuccessFunction
+                                ).then(() => {
 
                                     if (actionConfig.willDispatchAction) {
                                         expect(dispatchedActions).toEqual([ {
                                             type: actionConfig.expectedType,
                                             payload: payloadConfig.expectedPayload,
+                                            onDispatchSuccess: dispatchSuccessFunction,
                                         } ]);
 
                                     } else {

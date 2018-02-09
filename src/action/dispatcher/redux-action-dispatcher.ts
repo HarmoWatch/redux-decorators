@@ -4,7 +4,7 @@ import { ReduxActionContextDecorator, ReduxActionDecorator, ReduxActionFunction 
 
 export class ReduxActionDispatcher {
 
-    public static readonly dispatchedActions = new Subject<{ type: string, payload: any }>();
+    public static readonly dispatchedActions = new Subject<{ type: string, payload: any, onDispatchSuccess: Function }>();
 
     public static getType(target: ReduxActionFunction): string {
 
@@ -28,12 +28,18 @@ export class ReduxActionDispatcher {
         return `${ context.prefix }${ type }`;
     }
 
-    public static dispatch(target: ReduxActionFunction, payload?: {} | Promise<{}> | Observable<{}>): Promise<void> {
+    public static dispatch(target: ReduxActionFunction,
+                           payload?: {} | Promise<{}> | Observable<{}>,
+                           onDispatchSuccess?: Function): Promise<void> {
         return Promise
             .resolve(payload instanceof Observable ? payload.toPromise() : payload)
             .then((p) => {
                 const type = ReduxActionDispatcher.getType(target);
-                type ? ReduxActionDispatcher.dispatchedActions.next({type, payload: p}) : null;
+                type ? ReduxActionDispatcher.dispatchedActions.next({
+                    type,
+                    payload: p,
+                    onDispatchSuccess,
+                }) : null;
             });
     }
 

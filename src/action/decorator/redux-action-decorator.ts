@@ -5,7 +5,8 @@ import { GenericDecorator, MethodType } from '../../generic/generic-decorator';
 
 export interface ReduxActionDecoratorConfig {
     type?: string;
-    contextClass?: {}
+    contextClass?: {},
+    onDispatchSuccess?: Function;
 }
 
 export function ReduxActionDecoratorForMethod(config?: ReduxActionDecoratorConfig) {
@@ -29,12 +30,14 @@ export class ReduxActionDecorator extends GenericDecorator<ReduxActionDecoratorC
             config = Object.assign({
                 type: String(propertyKey),
                 contextClass: target.constructor,
+                onDispatchSuccess: null,
             }, config);
 
             const originalFunction = descriptor.value;
             const proxyFunction = function () {
                 const returnValue = originalFunction.apply(this, arguments);
-                ReduxActionDispatcher.dispatch(proxyFunction, returnValue);
+                const onDispatchSuccess = config.onDispatchSuccess ? config.onDispatchSuccess.bind(this) : null;
+                ReduxActionDispatcher.dispatch(proxyFunction, returnValue, onDispatchSuccess);
                 return returnValue;
             } as MethodType<{}>;
 
