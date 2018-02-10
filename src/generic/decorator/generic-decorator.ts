@@ -1,8 +1,5 @@
 import 'reflect-metadata';
-
-export type MethodType<T> = (target: object,
-                             propertyKey: string | symbol,
-                             descriptor: TypedPropertyDescriptor<T>) => void;
+import { GenericDecoratorMethod } from './method/generic-decorator-method.type';
 
 export abstract class GenericDecorator<T> {
 
@@ -18,7 +15,7 @@ export abstract class GenericDecorator<T> {
         }
     }
 
-    public get forMethod(): (config?: T) => MethodType<Function> {
+    public get forMethod(): (config?: T) => GenericDecoratorMethod<Function> {
         return value => {
             return (target, propertyKey, descriptor) => {
                 this.defineMetadata(descriptor.value, value);

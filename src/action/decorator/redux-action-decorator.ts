@@ -1,7 +1,8 @@
 import 'rxjs/add/operator/toPromise';
 
 import { ReduxActionDispatcher } from '../../';
-import { GenericDecorator, MethodType } from '../../generic/generic-decorator';
+import { GenericDecorator} from '../../generic/decorator/generic-decorator';
+import { GenericDecoratorMethod } from '../../generic/decorator/method/generic-decorator-method.type';
 
 export interface ReduxActionDecoratorConfig {
     type?: string;
@@ -25,7 +26,7 @@ export class ReduxActionDecorator extends GenericDecorator<ReduxActionDecoratorC
         super('ReduxAction');
     }
 
-    public get forMethod(): (config?: ReduxActionDecoratorConfig) => MethodType<Function> {
+    public get forMethod(): (config?: ReduxActionDecoratorConfig) => GenericDecoratorMethod<Function> {
         return config => (target, propertyKey, descriptor) => {
             config = Object.assign({
                 type: String(propertyKey),
@@ -39,7 +40,7 @@ export class ReduxActionDecorator extends GenericDecorator<ReduxActionDecoratorC
                 const onDispatchSuccess = config.onDispatchSuccess ? config.onDispatchSuccess.bind(this) : null;
                 ReduxActionDispatcher.dispatch(proxyFunction, returnValue, onDispatchSuccess);
                 return returnValue;
-            } as MethodType<{}>;
+            } as GenericDecoratorMethod<{}>;
 
             this.defineMetadata(proxyFunction, config);
             descriptor.value = proxyFunction;

@@ -1,16 +1,17 @@
 import { ReduxActionDecorator } from '../../';
 import { ReduxReducerDecorator, ReduxReducerDecoratorForMethod } from './redux-reducer-decorator';
+import { ReduxActionWithPayload } from '../../action/redux-action-with-payload.interface';
 
 class SomeActionClass {
 
     @ReduxActionDecorator.forMethod()
-    public addFoo() {
-
+    public addFoo(): string {
+        return 'test string';
     }
 
     @ReduxActionDecorator.forMethod()
-    public addAnotherFoo() {
-
+    public addAnotherFoo(): string {
+        return 'test string';
     }
 
 }
@@ -18,26 +19,26 @@ class SomeActionClass {
 class SomeReducerClass {
 
     @ReduxReducerDecoratorForMethod(SomeActionClass.prototype.addFoo)
-    public addFoo() {
-
+    public addFoo<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return state;
     }
 
     @ReduxReducerDecoratorForMethod([
         SomeActionClass.prototype.addFoo,
         SomeActionClass.prototype.addAnotherFoo,
     ])
-    public addTwoFoos() {
-
+    public addTwoFoos<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return state;
     }
 
     @ReduxReducerDecoratorForMethod('some-action-type')
-    public stringType() {
-
+    public stringType<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return state;
     }
 
     @ReduxReducerDecoratorForMethod([ 'some-action-type', 'some-other-type' ])
-    public stringsType() {
-
+    public stringsType<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return null;
     }
 
 }

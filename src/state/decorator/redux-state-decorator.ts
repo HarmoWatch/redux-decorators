@@ -1,4 +1,4 @@
-import { GenericDecorator } from '../../generic/generic-decorator';
+import { GenericDecorator } from '../../generic/decorator/generic-decorator';
 
 export interface ReduxStateDecoratorConfig {
     name: string;

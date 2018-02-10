@@ -1,8 +1,8 @@
-import { ReduxReducerType, ReduxStateType } from '../../';
-import { GenericDecorator } from '../../generic/generic-decorator';
+import { ReduxReducerType, ReduxState } from '../../';
+import { GenericDecorator } from '../../generic/decorator/generic-decorator';
 
 export interface ReduxModuleDecoratorConfig {
-    state: ReduxStateType;
+    state: ReduxState;
     reducers?: ReduxReducerType[];
 }
 
