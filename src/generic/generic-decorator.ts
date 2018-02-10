@@ -31,11 +31,7 @@ export abstract class GenericDecorator<T> {
             return null;
         }
 
-        try {
-            return Reflect.getMetadata(this.key, target) as T;
-        } catch (e) {
-            return null;
-        }
+        return Reflect.getMetadata(this.key, target) as T;
     }
 
     protected defineMetadata(target: {}, value: T) {
