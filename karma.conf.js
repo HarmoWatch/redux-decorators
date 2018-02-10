@@ -18,7 +18,7 @@ module.exports = function (config) {
                 },
                 "lcovonly": {
                     "directory": "./",
-                    "filename": "coverage.lcov",
+                    "filename": "lcov.info",
                     "subdirectory": "coverage"
                 },
             },
