@@ -14,6 +14,10 @@ class SomeActionClass {
         return 'test string';
     }
 
+    @ReduxActionDecorator.forMethod()
+    public addDefaultFoo() {
+
+    }
 }
 
 class SomeReducerClass {
@@ -28,6 +32,21 @@ class SomeReducerClass {
         SomeActionClass.prototype.addAnotherFoo,
     ])
     public addTwoFoos<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return state;
+    }
+
+    @ReduxReducerDecoratorForMethod(SomeActionClass.prototype.addFoo)
+    @ReduxReducerDecoratorForMethod(SomeActionClass.prototype.addAnotherFoo)
+    public decoratedTwice<S>(state: S, action: ReduxActionWithPayload<string>): S {
+        return state;
+    }
+
+    @ReduxReducerDecoratorForMethod([
+        SomeActionClass.prototype.addFoo,
+        SomeActionClass.prototype.addAnotherFoo,
+    ])
+    @ReduxReducerDecoratorForMethod(SomeActionClass.prototype.addDefaultFoo)
+    public decoratedTwiceMixed<S>(state: S, action: ReduxActionWithPayload<string | void>): S {
         return state;
     }
 
@@ -53,6 +72,17 @@ describe('ReduxReducerMethodDecorator', () => {
         expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.addTwoFoos)).toEqual([
             SomeActionClass.prototype.addFoo,
             SomeActionClass.prototype.addAnotherFoo,
+        ]);
+
+        expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.decoratedTwice)).toEqual([
+            SomeActionClass.prototype.addFoo,
+            SomeActionClass.prototype.addAnotherFoo,
+        ]);
+
+        expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.decoratedTwiceMixed)).toEqual([
+            SomeActionClass.prototype.addFoo,
+            SomeActionClass.prototype.addAnotherFoo,
+            SomeActionClass.prototype.addDefaultFoo,
         ]);
 
         expect(ReduxReducerDecorator.get(SomeReducerClass.prototype.stringType)).toEqual('some-action-type');

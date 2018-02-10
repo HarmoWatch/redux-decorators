@@ -1,4 +1,4 @@
-import { GenericDecorator} from '../../generic/decorator/generic-decorator';
+import { GenericDecorator } from '../../generic/decorator/generic-decorator';
 import { ReduxReducerFunction } from '../function/redux-reducer-function.type';
 import { ReduxActionFunction } from '../../action/function/redux-action-function.type';
 import { GenericDecoratorMethod } from '../../generic/decorator/method/generic-decorator-method.type';
@@ -20,4 +20,13 @@ export class ReduxReducerDecorator extends GenericDecorator<ReduxReducerDecorato
         super('ReduxReducer');
     }
 
+    protected defineMetadata(target: {}, value: ReduxReducerDecoratorConfig): void {
+        const metadata = this.get(target);
+
+        if (metadata) {
+            return super.defineMetadata(target, [].concat(value).concat(metadata));
+        }
+
+        super.defineMetadata(target, value);
+    }
 }
