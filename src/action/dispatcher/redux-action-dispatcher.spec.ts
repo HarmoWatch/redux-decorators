@@ -1,3 +1,4 @@
+import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/from';
 
 import { Observable } from 'rxjs/Observable';

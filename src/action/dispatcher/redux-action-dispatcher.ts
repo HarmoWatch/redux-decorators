@@ -1,3 +1,5 @@
+import 'rxjs/add/operator/toPromise';
+
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { ReduxActionContextDecorator, ReduxActionDecorator, ReduxActionFunction } from '../../';
