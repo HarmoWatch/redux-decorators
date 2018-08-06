@@ -1,5 +1,3 @@
-import 'rxjs/add/operator/toPromise';
-
 import { ReduxActionDispatcher } from '../../';
 import { GenericDecorator} from '../../generic/decorator/generic-decorator';
 import { GenericDecoratorMethod } from '../../generic/decorator/method/generic-decorator-method.type';

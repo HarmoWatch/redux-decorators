@@ -1,8 +1,5 @@
-import 'rxjs/add/operator/toPromise';
-
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { ReduxActionContextDecorator, ReduxActionDecorator, ReduxActionFunction } from '../../';
+import {Observable, Subject} from 'rxjs';
+import {ReduxActionContextDecorator, ReduxActionDecorator, ReduxActionFunction} from '../../';
 
 export class ReduxActionDispatcher {
 
@@ -33,6 +30,7 @@ export class ReduxActionDispatcher {
     public static dispatch(target: ReduxActionFunction,
                            payload?: {} | Promise<{}> | Observable<{}>,
                            onDispatchSuccess?: Function): Promise<void> {
+
         return Promise
             .resolve(payload instanceof Observable ? payload.toPromise() : payload)
             .then((p) => {

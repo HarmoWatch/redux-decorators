@@ -1,7 +1,5 @@
-import 'rxjs/add/observable/from';
-
-import { ReduxActionDispatcher } from '../../';
-import { ReduxActionDecorator, ReduxActionDecoratorForMethod } from './redux-action-decorator';
+import {ReduxActionDispatcher} from '../../';
+import {ReduxActionDecorator, ReduxActionDecoratorForMethod} from './redux-action-decorator';
 
 class TestSubject {
 
@@ -37,7 +35,7 @@ describe('ReduxActionDecorator', () => {
         spyOn(ReduxActionDispatcher, 'dispatch');
     });
 
-    [ {
+    [{
         desc: 'methodWithCustomType()',
         target: TestSubject.prototype.methodWithCustomType,
         expected: {
@@ -58,7 +56,7 @@ describe('ReduxActionDecorator', () => {
             type: 'updateSomething',
             onDispatchSuccess: TestSubject.prototype.updateSomethingDispatchSuccess,
         }
-    } ].forEach(cfg => {
+    }].forEach(cfg => {
 
         describe(cfg.desc, () => {
 
@@ -76,7 +74,7 @@ describe('ReduxActionDecorator', () => {
                 expect(cfg.target.call(thisContext, '123')).toEqual('123');
                 expect(spy).toHaveBeenCalledTimes(1);
 
-                const [ givenTarget, givenPayload, givenOnDispatchSuccess ] = spy.calls.mostRecent().args;
+                const [givenTarget, givenPayload, givenOnDispatchSuccess] = spy.calls.mostRecent().args;
 
                 expect(givenTarget).toBe(cfg.target);
                 expect(givenPayload).toBe('123');

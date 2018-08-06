@@ -1,9 +1,6 @@
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/from';
-
-import { Observable } from 'rxjs/Observable';
-import { ReduxActionContextDecorator, ReduxActionDecorator } from '../../';
-import { ReduxActionDispatcher } from './redux-action-dispatcher';
+import {from} from 'rxjs';
+import {ReduxActionContextDecorator, ReduxActionDecorator} from '../../';
+import {ReduxActionDispatcher} from './redux-action-dispatcher';
 
 describe('ReduxActionDispatcher', () => {
 
@@ -58,7 +55,7 @@ describe('ReduxActionDispatcher', () => {
     }
 
 
-    [ {
+    [{
         name: 'FooActions.addFoo',
         target: FooActions.prototype.addFoo,
         willDispatchAction: true,
@@ -98,9 +95,9 @@ describe('ReduxActionDispatcher', () => {
         target: 'some/string',
         willDispatchAction: true,
         expectedType: 'some/string',
-    } ].forEach(actionConfig => {
+    }].forEach(actionConfig => {
 
-        const [ className, methodName ] = actionConfig.name.split('.');
+        const [className, methodName] = actionConfig.name.split('.');
 
         describe('getType()', () => {
 
@@ -136,7 +133,7 @@ describe('ReduxActionDispatcher', () => {
 
                 describe(methodName ? `.${methodName}()` : 'string dispatch', () => {
 
-                    [ {
+                    [{
                         desc: 'payload is a string',
                         payload: 'lorem ipsum',
                         expectedPayload: 'lorem ipsum',
@@ -146,9 +143,9 @@ describe('ReduxActionDispatcher', () => {
                         expectedPayload: 'lorem ipsum dolor',
                     }, {
                         desc: 'payload is an Observable',
-                        payload: Observable.from([ 'one', 'two', 'three' ]),
+                        payload: from(['one', 'two', 'three']),
                         expectedPayload: 'three',
-                    } ].forEach(payloadConfig => {
+                    }].forEach(payloadConfig => {
 
                         describe(payloadConfig.desc, () => {
 
@@ -164,11 +161,11 @@ describe('ReduxActionDispatcher', () => {
                                 ).then(() => {
 
                                     if (actionConfig.willDispatchAction) {
-                                        expect(dispatchedActions).toEqual([ {
+                                        expect(dispatchedActions).toEqual([{
                                             type: actionConfig.expectedType,
                                             payload: payloadConfig.expectedPayload,
                                             onDispatchSuccess: dispatchSuccessFunction,
-                                        } ]);
+                                        }]);
 
                                     } else {
                                         expect(dispatchedActions).toEqual([]);
