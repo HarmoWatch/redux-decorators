@@ -36,7 +36,7 @@
     "karma-typescript": "3.0.13",
     "reflect-metadata": "0.1.13",
     "rimraf": "2.6.3",
-    "rxjs": "6.3.3",
+    "rxjs": "6.4.0",
     "tslint": "5.12.1",
     "tslint-no-circular-imports": "0.6.1",
     "typescript": "3.2.4"
