@@ -19,7 +19,7 @@
     "rxjs": "6.x"
   },
   "devDependencies": {
-    "@types/jasmine": "3.3.8",
+    "@types/jasmine": "3.3.9",
     "babel-core": "6.26.3",
     "cross-env": "5.2.0",
     "jasmine": "3.3.1",
