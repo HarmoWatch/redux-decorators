@@ -38,7 +38,7 @@
     "rimraf": "2.6.3",
     "rxjs": "6.4.0",
     "tslint": "5.15.0",
-    "tslint-no-circular-imports": "0.6.1",
+    "tslint-no-circular-imports": "0.6.2",
     "typescript": "3.4.3"
   }
 }
