@@ -39,6 +39,6 @@
     "rxjs": "6.4.0",
     "tslint": "5.16.0",
     "tslint-no-circular-imports": "0.6.2",
-    "typescript": "3.4.3"
+    "typescript": "3.4.4"
   }
 }
