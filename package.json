@@ -37,7 +37,7 @@
     "reflect-metadata": "0.1.13",
     "rimraf": "2.6.3",
     "rxjs": "6.5.2",
-    "tslint": "5.16.0",
+    "tslint": "5.17.0",
     "tslint-no-circular-imports": "0.6.2",
     "typescript": "3.5.1"
   }
